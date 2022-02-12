@@ -74,10 +74,21 @@ void __DS5W::Output::processTrigger(DS5W::TriggerEffect* ptrEffect, unsigned cha
 			buffer[0x05] = ptrEffect->EffectEx.middleForce;
 			buffer[0x06] = ptrEffect->EffectEx.endForce;
 			// Frequency
-			buffer[0x09] = max(1, ptrEffect->EffectEx.frequency / 2);
+			buffer[0x09] = ptrEffect->EffectEx.frequency;
 
 			break;
 
+		case DS5W::TriggerEffectType::Vibration:
+			// Mode
+			buffer[0x00] = 0x06;
+			//Parameters
+			buffer[0x01] = max(1, ptrEffect->Vibration.vibrationFrequency / 2);
+
+
+			buffer[0x02] = ptrEffect->Vibration.vibrationStrength;
+			buffer[0x03] = ptrEffect->Vibration.startPosition;
+
+			break;
 		// Calibrate
 		case DS5W::TriggerEffectType::Calibrate:
 			// Mode 

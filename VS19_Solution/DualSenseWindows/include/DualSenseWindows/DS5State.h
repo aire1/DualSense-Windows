@@ -162,6 +162,12 @@ namespace DS5W {
 		/// Calibrate triggers
 		/// </summary>
 		Calibrate = 0xFC,
+
+		/// <summary>
+		/// Vibration
+		/// </summary>
+		Vibration = 0x06,
+		
 	} TriggerEffectType;
 
 	/// <summary>
@@ -256,6 +262,17 @@ namespace DS5W {
 				/// </summary>
 				unsigned char frequency;
 			} EffectEx;
+
+			/// <summary>
+			/// For type == Vibration
+			/// </summary>
+			struct {
+				unsigned char vibrationFrequency;
+
+				unsigned char vibrationStrength;
+
+				unsigned char startPosition;
+			} Vibration;
 		};
 	} TriggerEffect;
 
